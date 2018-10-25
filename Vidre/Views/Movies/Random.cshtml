@@ -1,0 +1,35 @@
+﻿<!--telling which model to use-->
+@using Vidre.Models
+@model Vidre.ViewModel.RandomMovieViewModel
+
+
+@{
+    ViewBag.Title = "Random";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!--This is how to write a C# code block-->
+@{
+    @*Dynamically rendering a class*@
+    var className = Model.Customers.Count > 0 ? "popular" : null;
+
+}
+
+<h2 class="@className">@Model.Movie.Name</h2>
+
+@if (Model.Customers.Count == 0)
+{
+    <p>No one has rented this movie before</p>
+}
+else
+{
+    <ul>
+        @foreach (var cus in Model.Customers)
+        {
+            <li>@cus.Name</li>
+        }
+
+    </ul>
+
+}
+
